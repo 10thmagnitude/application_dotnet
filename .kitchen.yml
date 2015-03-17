@@ -1,16 +1,27 @@
 ---
 driver:
+  forward_agent: yes
   name: vagrant
+  vm_hostname: false # do not bother trying to change the hostname (sometimes fails)
+  customize:
+    cpus: 2
+    memory: 4096
+
+transport:
+  name: winrm
 
 provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-12.04
-  - name: centos-6.5
+  - name: windows_2012r2-chef12
+    driver_config:
+      box: win2k12r2
+      box_url: # insert your own URL to box files here  
+      gui: true
 
 suites:
   - name: default
     run_list:
       - recipe[application_dotnet::default]
-    attributes:
+
