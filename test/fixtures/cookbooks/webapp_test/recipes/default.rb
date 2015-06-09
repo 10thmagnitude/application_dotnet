@@ -50,7 +50,7 @@ iis_app "AppDotNetSample" do
   physical_path "#{node['iis']['docroot']}/ApplicationDotNetSample"
   enabled_protocols "http,net.pipe"
   action :add
-end 
+end
 
 windows_zipfile "C:/Sample" do
   source "https://www.dropbox.com/s/fbvnef9fqvse01q/WebDeploySample.zip?dl=1"
@@ -58,7 +58,7 @@ windows_zipfile "C:/Sample" do
   action :unzip
 end
 
-application_dotnet_dotnet_webapp "ApplicationDotNetSample" do 
+application_dotnet_dotnet_webapp "ApplicationDotNetSample" do
   cwd "C:/Sample"
   action :deploy
 end
