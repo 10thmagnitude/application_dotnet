@@ -14,14 +14,18 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: windows_2012r2-chef12
-    driver_config:
-      box: win2k12r2
-      box_url: # insert your own URL to box files here  
-      gui: true
+- name: windows-2012R2
+  driver_config:
+    box: #your box file here
+    communicator: winrm
+    vm_hostname: false
+  transport:
+    name: winrm
+    provisioner:
+      require_chef_omnibus: 12.0.3
 
 suites:
   - name: default
     run_list:
       - recipe[application_dotnet::default]
-
+    attributes:
