@@ -16,8 +16,8 @@ provisioner:
 platforms:
 - name: windows-2012R2
   driver_config:
-    box: #your box file here
-    communicator: winrm
+    box: win2k12r2
+    box_url: #insert your own URL to your box here
     vm_hostname: false
   transport:
     name: winrm
@@ -27,5 +27,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[application_dotnet::default]
+        - recipe[webapp_test::default]
     attributes:
