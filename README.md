@@ -1,11 +1,21 @@
 application_dotnet
 ================
 Provides a set of .NET primitives (Chef resources) meant to aid in the deployment of .NET applications on the Windows platform
+ 
+Currently this cookbook supports the deployment of .NET Web Deploy Packages 
 
 
 Requirements
 -------------
 Currently only tested on chef-client >=12
+
+You must set up your IIS Web Server before calling using the dotnet_webapp deployment resource.
+Including:
+	-App Pool
+	-Web Site
+	-Application
+
+You must move your Web Deploy Package onto the target node. This is accomplished using windows_zipfile in the test recipe. This will change in future versions. 
 
 ### Platforms
 * Windows 2012R2
@@ -18,17 +28,24 @@ Resource/Provider
 -----------------
 ### dotnet_webapp
 #### Actions
-- :create: Create a .NET web application
+- :deploy: deploy a .NET web application
 
 #### Attribute Parameters
-- :name: Name attribute. The name of application
+- :name: Name attribute. The name of web deploy package. 
+- :cwd: Changes working directory (allows us to get to the same directory that we unzipped the package), default nil
+- :trial: Sets flag for whether or not to run deployment in trial mode, default false
+- :skip_database_provider Adds logic to skip database provider, default false
+- :skip_web_configs: chooses which web configs, if any, should be skipped. Options :none, :root, :all
+
+More details about the attributes can be found in the Microsoft deploy with deploy.cmd file guide. [How to: Install a Deployment Package Using the deploy.cmd File](https://msdn.microsoft.com/en-us/library/vstudio/ff356104)
 
 #### Examples
-Create a .NET web app
+Deploy a .NET web app
 
 ```ruby
-donet_webapp 'MyWebApp' do
-  action  :create
+application_dotnet_dotnet_webapp "ApplicationDotNetSample" do 
+	cwd "C:/Sample"
+	action :deploy
 end
 ```
 
