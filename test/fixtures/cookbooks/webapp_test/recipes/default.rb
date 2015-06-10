@@ -58,7 +58,7 @@ windows_zipfile "C:/Sample" do
   action :unzip
 end
 
-application_dotnet_dotnet_webapp "ApplicationDotNetSample" do
+application_dotnet_webapp "ApplicationDotNetSample" do
   cwd "C:/Sample"
   action :deploy
 end
