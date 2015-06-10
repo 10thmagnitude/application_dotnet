@@ -17,6 +17,8 @@ Including:
 
 You must move your Web Deploy Package onto the target node. This is accomplished using windows_zipfile in the test recipe. This will change in future versions. 
 
+When generating the Web Deploy Package, make sure that the site name you provide includes any pathing. For example if you're referencing an application that exists under a website you should set the site name to <SiteName>/<AppName>.
+
 ### Platforms
 * Windows 2012R2
 
@@ -48,6 +50,10 @@ application_dotnet_dotnet_webapp "ApplicationDotNetSample" do
 	action :deploy
 end
 ```
+
+Sample
+-----------------
+The sample recipe inclued in the test fixture will host the test application at localhost/AppDotNetSample
 
 License & Authors
 -----------------
