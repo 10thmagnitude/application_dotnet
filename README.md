@@ -1,8 +1,8 @@
 application_dotnet
 ================
 Provides a set of .NET primitives (Chef resources) meant to aid in the deployment of .NET applications on the Windows platform
- 
-Currently this cookbook supports the deployment of .NET Web Deploy Packages 
+
+Currently this cookbook supports the deployment of .NET Web Deploy Packages
 
 
 Requirements
@@ -15,7 +15,7 @@ Including:
 	-Web Site
 	-Application
 
-You must move your Web Deploy Package onto the target node. This is accomplished using windows_zipfile in the test recipe. This will change in future versions. 
+You must move your Web Deploy Package onto the target node. This is accomplished using windows_zipfile in the test recipe. This will change in future versions.
 
 When generating the Web Deploy Package, make sure that the site name you provide includes any pathing. For example if you're referencing an application that exists under a website you should set the site name to <SiteName>/<AppName>.
 
@@ -28,12 +28,12 @@ TBD
 
 Resource/Provider
 -----------------
-### dotnet_webapp
+### webapp
 #### Actions
 - :deploy: deploy a .NET web application
 
 #### Attribute Parameters
-- :name: Name attribute. The name of web deploy package. 
+- :name: Name attribute. The name of web deploy package.
 - :cwd: Changes working directory (allows us to get to the same directory that we unzipped the package), default nil
 - :trial: Sets flag for whether or not to run deployment in trial mode, default false
 - :skip_database_provider Adds logic to skip database provider, default false
@@ -45,7 +45,7 @@ More details about the attributes can be found in the Microsoft deploy with depl
 Deploy a .NET web app
 
 ```ruby
-application_dotnet_dotnet_webapp "ApplicationDotNetSample" do 
+application_dotnet_webapp "ApplicationDotNetSample" do 
 	cwd "C:/Sample"
 	action :deploy
 end
