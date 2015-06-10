@@ -28,8 +28,8 @@ describe 'webapp_test::default'  {
     }
 
     It "Should have our application website" {
-      Get-Website -Name "AppDotNetSample" | Should be $true
-      (Get-Website -Name "AppDotNetSample").State | Should be "Started"
+      Get-Website -Name "AppDotNetSite" | Should be $true
+      (Get-Website -Name "AppDotNetSite").State | Should be "Started"
     }
 
     # We need to figure out a way to ensure that the app pool is bound to the site, etc, but this is a start
@@ -39,6 +39,6 @@ describe 'webapp_test::default'  {
     }
 
     It "Should have our webapp" {
-     Get-WebApplication -Name "ApplicationDotNetSample" | Should be $true
+     Get-WebApplication -Name "AppDotNetSample" | Should be $true
     }
 }

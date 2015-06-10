@@ -39,14 +39,15 @@ iis_pool "AppDotNetSample" do
    action :add
 end
 
-iis_site "AppDotNetSample" do
-  path "#{node['iis']['docroot']}/ApplicationDotNetSample"
+iis_site "AppDotNetSite" do
+  path "#{node['iis']['docroot']}"
     action [:add, :start]
 end
 
 iis_app "AppDotNetSample" do
-  path "/ApplicationDotNetSample"
-  application_pool "ApplicationDotNetSample"
+  site_name "AppDotNetSite"
+  path "/AppDotNetSample"
+  application_pool "AppDotNetSample"
   physical_path "#{node['iis']['docroot']}/ApplicationDotNetSample"
   enabled_protocols "http,net.pipe"
   action :add
