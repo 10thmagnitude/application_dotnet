@@ -39,7 +39,6 @@ describe 'webapp_test::default'  {
     }
 
     It "Should have our webapp" {
-     Get-WebApplication -Name "AppDotNetSample" | Should be $true
-     (Get-WebApplication -Name "AppDotNetSample").value | Should be "Started"
+     Get-WebApplication -Name "ApplicationDotNetSample" | Should be $true
     }
 }
