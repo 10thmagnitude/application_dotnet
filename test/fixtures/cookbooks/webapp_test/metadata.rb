@@ -5,3 +5,7 @@ license 'all_rights'
 description 'Installs/Configures webapp_test'
 long_description 'Installs/Configures webapp_test'
 version '0.1.0'
+
+depends 'windows'
+depends 'iis'
+depends 'application_dotnet'
